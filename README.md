@@ -6,7 +6,7 @@ A Flutter package to display tree planting progress in a circular style with ani
 
 The `TreeCirclePointProgressCard` widget provides a visual representation of tree planting progress. It features:
 - A circular progress indicator that animates automatically.
-- A central tree image that changes based on progress (from seedling to full tree).
+- A central tree image that changes based on progress (from seedling to full tree), loaded from a specified asset package.
 - Play/pause controls for the animation.
 - Display of planted trees and remaining points.
 
@@ -34,7 +34,7 @@ flutter:
 ```
 
 ### Loading from a Mini Package
-To load tree images from another package (e.g., a shared asset package), use the `assetPackage` parameter:
+Tree images are loaded from a specified asset package using the `assetPackage` parameter. This is required for images to display.
 
 ```dart
 TreeCirclePointProgressCard(
@@ -54,7 +54,7 @@ Ensure the package:
 |-----------|------|----------|-------------|
 | `treesPlanted` | `int` | Yes | Number of trees planted, displayed as text. |
 | `pointsRemaining` | `int` | Yes | Points needed for the next tree, displayed as "+X points more". |
-| `assetPackage` | `String?` | No | Package name to load tree images from. If null, loads from app assets. |
+| `assetPackage` | `String` | Yes | Package name to load tree images from. Required for images to display. |
 | `key` | `Key?` | No | Standard Flutter key parameter. |
 
 ## Usage Examples
@@ -71,6 +71,7 @@ class MyWidget extends StatelessWidget {
     return TreeCirclePointProgressCard(
       treesPlanted: 10,
       pointsRemaining: 50,
+      assetPackage: 'tree_assets',
     );
   }
 }
@@ -112,6 +113,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
         TreeCirclePointProgressCard(
           treesPlanted: trees,
           pointsRemaining: points,
+          assetPackage: 'tree_assets',
         ),
         ElevatedButton(
           onPressed: updateProgress,
@@ -140,9 +142,10 @@ A stateful widget that displays the progress card.
 ## Troubleshooting
 
 ### Tree Images Not Showing
+- **Provide assetPackage**: The `assetPackage` parameter is required for images to display.
 - **Check Console**: Look for "Failed to load asset" messages in debug console.
-- **Verify Assets**: Ensure all 21 tree images are present in `assets/logo/` and declared in `pubspec.yaml`.
-- **Asset Package**: If using `assetPackage`, confirm the package name is correct and assets are declared in the package's `pubspec.yaml`.
+- **Verify Assets**: Ensure all 21 tree images are present in the package's `assets/logo/` and declared in the package's `pubspec.yaml`.
+- **Asset Package**: Confirm the package name is correct and the package is added as a dependency in your app's `pubspec.yaml`.
 - **Path Format**: Asset paths must be `assets/logo/tree_<index>.png` (no variations).
 
 ### Animation Not Working
