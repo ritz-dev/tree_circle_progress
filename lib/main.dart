@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
       home: TreeCirclePointProgressCard(
         treesPlanted: 30,
         pointsRemaining: 495,
+        assetPackage:
+            'tree_assets', // Replace with your actual asset package name
       ),
     );
   }
