@@ -2,18 +2,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TreeProgressCard extends StatefulWidget {
+class TreeCirclePointProgressCard extends StatefulWidget {
 
 
-  const TreeProgressCard({
+  const TreeCirclePointProgressCard({
     super.key,
   });
 
   @override
-  State<TreeProgressCard> createState() => _TreeProgressCardState();
+  State<TreeCirclePointProgressCard> createState() => _TreeCirclePointProgressCardState();
 }
 
-class _TreeProgressCardState extends State<TreeProgressCard> {
+class _TreeCirclePointProgressCardState extends State<TreeCirclePointProgressCard> {
   double progress = 0.0; // 0.0–1.0
   Timer? _timer;
   bool isPlaying = true; // Track play/pause
