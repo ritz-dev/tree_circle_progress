@@ -36,7 +36,7 @@ class _TreeCirclePointProgressCardState
   void _preloadImages() {
     // Preload all tree images for better performance
     _imagePaths = List.generate(21, (index) => "assets/logo/tree_$index.png");
-    
+
     // Preload images in the background
     WidgetsBinding.instance.addPostFrameCallback((_) {
       for (String imagePath in _imagePaths) {
