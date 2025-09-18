@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TreeCirclePointProgressCard extends StatefulWidget {
@@ -25,18 +24,35 @@ class _TreeCirclePointProgressCardState
   double progress = 0.0; // 0.0–1.0
   Timer? _timer;
   bool isPlaying = true; // Track play/pause
+  List<String> _imagePaths = [];
 
   @override
   void initState() {
     super.initState();
+    _preloadImages();
     _startAutoProgress();
+  }
+
+  void _preloadImages() {
+    // Preload all tree images for better performance
+    _imagePaths = List.generate(21, (index) => "assets/logo/tree_$index.png");
+    
+    // Preload images in the background
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      for (String imagePath in _imagePaths) {
+        precacheImage(
+          AssetImage(imagePath, package: widget.assetPackage),
+          context,
+        );
+      }
+    });
   }
 
   void _startAutoProgress() {
     _timer?.cancel(); // cancel any existing timer
-    _timer = Timer.periodic(const Duration(milliseconds: 800), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       setState(() {
-        progress += 0.01; // increment 1%
+        progress += 0.001; // increment 0.1%
         if (progress > 1.0) progress = 0.0; // loop back to 0
       });
     });
@@ -71,6 +87,9 @@ class _TreeCirclePointProgressCardState
     int percent = (progress * 100).round();
     int index = (percent / 5).floor(); // 0–20
     if (index > 20) index = 20;
+    if (index < _imagePaths.length) {
+      return _imagePaths[index];
+    }
     return "assets/logo/tree_$index.png";
   }
 
@@ -138,25 +157,28 @@ class _TreeCirclePointProgressCardState
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: Image.asset(
-                              getTreeImage(progress),
-                              fit: BoxFit.cover,
-                              package: widget.assetPackage,
-                              errorBuilder: (context, error, stackTrace) {
-                                final assetPath = getTreeImage(progress);
-                                debugPrint(
-                                  'Failed to load asset: $assetPath (package=${widget.assetPackage}) -> $error',
-                                );
-                                return const Center(
-                                  child: Icon(
-                                    Icons.broken_image,
-                                    size: 40,
-                                    color: Colors.grey,
-                                  ),
-                                );
-                              },
+                          child: RepaintBoundary(
+                            child: Padding(
+                              padding: const EdgeInsets.all(0),
+                              child: Image.asset(
+                                getTreeImage(progress),
+                                fit: BoxFit.cover,
+                                package: widget.assetPackage,
+                                gaplessPlayback: true,
+                                errorBuilder: (context, error, stackTrace) {
+                                  final assetPath = getTreeImage(progress);
+                                  debugPrint(
+                                    'Failed to load asset: $assetPath (package=${widget.assetPackage}) -> $error',
+                                  );
+                                  return const Center(
+                                    child: Icon(
+                                      Icons.broken_image,
+                                      size: 40,
+                                      color: Colors.grey,
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
