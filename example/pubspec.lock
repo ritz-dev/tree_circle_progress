@@ -300,8 +300,10 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/tree_assets"
-      relative: true
-    source: path
+      ref: tree_circle_progress
+      resolved-ref: "726382de34567145e669a5f4373e38d4f5169724"
+      url: "https://github.com/ritz-dev/tree_circle_progress.git"
+    source: git
     version: "1.0.0"
   tree_circle_progress:
     dependency: "direct main"
