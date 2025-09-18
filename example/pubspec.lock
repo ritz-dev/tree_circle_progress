@@ -299,9 +299,11 @@ packages:
   tree_circle_progress:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      path: "."
+      ref: tree_circle_progress
+      resolved-ref: "667898853585c43aa2111cedacdb03288bdf8a6e"
+      url: "https://github.com/ritz-dev/tree_circle_progress.git"
+    source: git
     version: "1.0.0"
   typed_data:
     dependency: transitive

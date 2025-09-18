@@ -10,7 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
   tree_circle_progress:
-    path: ../
+    git:
+      url: https://github.com/ritz-dev/tree_circle_progress.git
+      ref: tree_circle_progress
 
 dev_dependencies:
   flutter_test:
