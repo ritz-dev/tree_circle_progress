@@ -5,18 +5,22 @@ import 'package:google_fonts/google_fonts.dart';
 class TreeCirclePointProgressCard extends StatefulWidget {
   final int treesPlanted;
   final int pointsRemaining;
+  final String? assetPackage;
 
   const TreeCirclePointProgressCard({
     super.key,
     required this.treesPlanted,
     required this.pointsRemaining,
+    this.assetPackage,
   });
 
   @override
-  State<TreeCirclePointProgressCard> createState() => _TreeCirclePointProgressCardState();
+  State<TreeCirclePointProgressCard> createState() =>
+      _TreeCirclePointProgressCardState();
 }
 
-class _TreeCirclePointProgressCardState extends State<TreeCirclePointProgressCard> {
+class _TreeCirclePointProgressCardState
+    extends State<TreeCirclePointProgressCard> {
   double progress = 0.0; // 0.0–1.0
   Timer? _timer;
   bool isPlaying = true; // Track play/pause
@@ -55,6 +59,13 @@ class _TreeCirclePointProgressCardState extends State<TreeCirclePointProgressCar
     super.dispose();
   }
 
+  // Developer note:
+  // - `assetPackage` (optional) can be provided to load images from another
+  //   package (a mini package). If null, images are loaded from the app's
+  //   asset bundle.
+  // - Keep the asset path format `assets/logo/tree_<index>.png` and ensure
+  //   the package that provides the assets declares them under
+  //   `flutter/assets` in its `pubspec.yaml` and is added as a dependency.
   String getTreeImage(double progress) {
     int percent = (progress * 100).round();
     int index = (percent / 5).floor(); // 0–20
@@ -131,6 +142,7 @@ class _TreeCirclePointProgressCardState extends State<TreeCirclePointProgressCar
                             child: Image.asset(
                               getTreeImage(progress),
                               fit: BoxFit.cover,
+                              package: widget.assetPackage,
                             ),
                           ),
                         ),
@@ -158,7 +170,6 @@ class _TreeCirclePointProgressCardState extends State<TreeCirclePointProgressCar
               fontWeight: FontWeight.w500,
               color: const Color(0XFF83848B),
               decoration: TextDecoration.none,
-
             ),
           ),
           const SizedBox(height: 2),
