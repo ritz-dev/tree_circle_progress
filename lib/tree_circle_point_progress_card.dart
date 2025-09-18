@@ -6,13 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 class TreeCirclePointProgressCard extends StatefulWidget {
   final int treesPlanted;
   final int pointsRemaining;
-  final String assetPackage;
+  final String? assetPackage;
 
   const TreeCirclePointProgressCard({
     super.key,
     required this.treesPlanted,
     required this.pointsRemaining,
-    required this.assetPackage,
+    this.assetPackage,
   });
 
   @override

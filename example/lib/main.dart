@@ -53,7 +53,6 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
               TreeCirclePointProgressCard(
                 treesPlanted: treesPlanted,
                 pointsRemaining: pointsRemaining,
-                assetPackage: 'tree_assets',
               ),
               const SizedBox(height: 40),
               ElevatedButton.icon(

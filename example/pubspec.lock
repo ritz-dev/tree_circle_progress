@@ -296,23 +296,12 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.6"
-  tree_assets:
-    dependency: "direct main"
-    description:
-      path: "packages/tree_assets"
-      ref: tree_circle_progress
-      resolved-ref: "726382de34567145e669a5f4373e38d4f5169724"
-      url: "https://github.com/ritz-dev/tree_circle_progress.git"
-    source: git
-    version: "1.0.0"
   tree_circle_progress:
     dependency: "direct main"
     description:
-      path: "."
-      ref: tree_circle_progress
-      resolved-ref: "87204b41a70737243daffa58ed12563388bf15b1"
-      url: "https://github.com/ritz-dev/tree_circle_progress.git"
-    source: git
+      path: ".."
+      relative: true
+    source: path
     version: "1.0.0"
   typed_data:
     dependency: transitive
