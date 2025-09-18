@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TreeCirclePointProgressCard extends StatefulWidget {
@@ -143,6 +144,19 @@ class _TreeCirclePointProgressCardState
                               getTreeImage(progress),
                               fit: BoxFit.cover,
                               package: widget.assetPackage,
+                              errorBuilder: (context, error, stackTrace) {
+                                final assetPath = getTreeImage(progress);
+                                debugPrint(
+                                  'Failed to load asset: $assetPath (package=${widget.assetPackage}) -> $error',
+                                );
+                                return const Center(
+                                  child: Icon(
+                                    Icons.broken_image,
+                                    size: 40,
+                                    color: Colors.grey,
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ),
