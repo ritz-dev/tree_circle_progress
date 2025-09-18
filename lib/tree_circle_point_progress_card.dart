@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TreeCirclePointProgressCard extends StatefulWidget {
-
+  final int treesPlanted;
+  final int pointsRemaining;
 
   const TreeCirclePointProgressCard({
     super.key,
+    required this.treesPlanted,
+    required this.pointsRemaining,
   });
 
   @override
@@ -145,6 +148,27 @@ class _TreeCirclePointProgressCardState extends State<TreeCirclePointProgressCar
                   ),
                 ),
               ],
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            "+${widget.pointsRemaining} points more",
+            style: GoogleFonts.inter(
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: const Color(0XFF83848B),
+              decoration: TextDecoration.none,
+
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            "Trees Planted ${widget.treesPlanted}",
+            style: GoogleFonts.inter(
+              fontSize: 17,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF083F8B),
+              decoration: TextDecoration.none,
             ),
           ),
         ],

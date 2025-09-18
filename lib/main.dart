@@ -13,7 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tree Circle Progress',
       debugShowCheckedModeBanner: false,
-      home: TreeCirclePointProgressCard(),
+      home: TreeCirclePointProgressCard(
+        treesPlanted: 30,
+        pointsRemaining: 495,
+      ),
     );
   }
 }
