@@ -34,8 +34,8 @@ class _TreeCirclePointProgressCardState
   }
 
   void _preloadImages() {
-    // Preload all tree images for better performance
-    _imagePaths = List.generate(21, (index) => "assets/logo/tree_$index.png");
+    // Preload all tree images for better performance (0-19 = 20 images total)
+    _imagePaths = List.generate(20, (index) => "assets/logo/tree_$index.png");
 
     // Preload images in the background
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -85,8 +85,8 @@ class _TreeCirclePointProgressCardState
   //   `flutter/assets` in its `pubspec.yaml` and is added as a dependency.
   String getTreeImage(double progress) {
     int percent = (progress * 100).round();
-    int index = (percent / 5).floor(); // 0–20
-    if (index > 20) index = 20;
+    int index = (percent / 5).floor(); // 0–19 (20 images total)
+    if (index > 19) index = 19; // Clamp to maximum available image
     if (index < _imagePaths.length) {
       return _imagePaths[index];
     }

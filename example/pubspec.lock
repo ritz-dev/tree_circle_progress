@@ -301,7 +301,7 @@ packages:
     description:
       path: "."
       ref: tree_circle_progress
-      resolved-ref: "667898853585c43aa2111cedacdb03288bdf8a6e"
+      resolved-ref: "14fb49e998a6127e0189f18acf9768f2b0716458"
       url: "https://github.com/ritz-dev/tree_circle_progress.git"
     source: git
     version: "1.0.0"

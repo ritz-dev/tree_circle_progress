@@ -16,7 +16,7 @@ The tree image view is the core visual element that animates based on the progre
 
 ### How It Works
 - Progress ranges from 0.0 to 1.0 (0% to 100%).
-- The `getTreeImage` function maps progress to an index (0-20), selecting the appropriate tree image asset.
+- The `getTreeImage` function maps progress to an index (0-19), selecting the appropriate tree image asset.
 - Images are loaded from `assets/logo/tree_<index>.png` (e.g., `tree_0.png` for 0-4%, `tree_1.png` for 5-9%, up to `tree_20.png` for 100%).
 
 ### Asset Requirements
