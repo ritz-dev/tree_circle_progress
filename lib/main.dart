@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tree_circle_progress/tree_circle_point_progress_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tree Circle Progress',
       debugShowCheckedModeBanner: false,
+      home: TreeProgressCard(),
     );
   }
 }

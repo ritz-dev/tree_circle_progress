@@ -1,16 +1,33 @@
 # tree_circle_progress
 
-A new Flutter project.
+A Flutter package to display tree planting progress in a circular style.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This package provides a reusable `TreeProgressCard` widget that shows the percentage of trees planted with a circular progress indicator and a tree image animation.
 
-A few resources to get you started if this is your first Flutter project:
+### Example Usage
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```dart
+import 'package:flutter/material.dart';
+import 'package:tree_circle_progress/tree_circle_progress.dart';
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Tree Progress Example')),
+        body: const Center(
+          child: TreeProgressCard(),
+        ),
+      ),
+    );
+  }
+}
